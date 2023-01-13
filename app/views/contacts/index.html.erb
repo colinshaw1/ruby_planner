@@ -1,14 +1,31 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Contacts</h1>
+  <table class="table table-striped table-bordered table-hover">
+    <thead class="thead-dark">
+    <tr>
+      <th>Contact</th>
 
-<div id="contacts">
+    </tr>
+    </thead>
+<tbody>
   <% @contacts.each do |contact| %>
+  <tr>
+    <td>
+
     <%= render contact %>
     <p>
-      <%= link_to "Show this contact", contact %>
-    </p>
-  <% end %>
-</div>
+    </td>
+
+
+
+
+  </tr>
+<% end %>
+  </tbody>
+  </table>
+
+
+
+
 
 <%= link_to "New contact", new_contact_path %>
