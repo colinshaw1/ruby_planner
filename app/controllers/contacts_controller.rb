@@ -16,7 +16,9 @@ class ContactsController < ApplicationController
 
   # GET /contacts/new
   def new
-    @contact = Contact.new
+    # @contact = Contact.new
+    # tell app to use cur_user method for new contacts
+    @contact = cur_user.contacts.build
   end
 
   # GET /contacts/1/edit
@@ -25,8 +27,9 @@ class ContactsController < ApplicationController
 
   # POST /contacts or /contacts.json
   def create
-    @contact = Contact.new(contact_params)
-
+    # @contact = Contact.new(contact_params)
+    # pass in current user method and params when creating a user
+    @contact = cur_user.contacts.build(contact_params)
     respond_to do |format|
       if @contact.save
         format.html { redirect_to contact_url(@contact), notice: "Contact was successfully created." }
