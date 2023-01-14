@@ -1,14 +1,15 @@
 <h1>Edit Contacts</h1>
 
 <h1>Edit To Do List</h1>
-
+<!--renders and outputs the form to edit a contacts details-->
 <%= render "form", contact: @contact %>
 
 <br>
 
 <div>
+  <!--  button to link back to show contact table-->
   <%= link_to "Show this contact", @contact, class: "btn btn-dark"  %>
-
+  <!--  button to go back to the contacts page and show all contacts-->
   <%= link_to "Back to contacts", contacts_path, class: "btn btn-dark"  %>
 
 

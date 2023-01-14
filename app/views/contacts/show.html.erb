@@ -3,8 +3,14 @@
 <%= render @contact %>
 
 <div>
+<!--  button to got to edit contact form-->
   <%= link_to "Edit this contact", edit_contact_path(@contact), class:"btn btn-dark" %>
+  <br>
+  <br>
+<!--  button to go back to contacts page-->
   <%= link_to "Back to contacts", contacts_path, class:"btn btn-dark" %>
-
-  <%= button_to "Destroy this contact", @contact, method: :delete, class:"btn btn-dark" %>
+  <br>
+  <br>
+<!--  button to go to delete this contact-->
+  <%= button_to "Delete contact", @contact, method: :delete, class:"btn btn-dark" %>
 </div>

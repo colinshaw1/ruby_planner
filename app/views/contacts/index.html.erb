@@ -1,21 +1,22 @@
 <p style="color: green"><%= notice %></p>
-
+<!--table using bootstrap to display contacts details and return in a table-->
 <table class="table table-striped table-bordered">
+<!--  table header-->
   <thead class="table-dark">
     <tr>
-
+<!--      table header columns content-->
       <th>First Name</th>
       <th>Last Name</th>
       <th>Email</th>
       <th>Number</th>
       <th> </th>
-
     </tr>
     </thead>
 <tbody>
   <% @contacts.each do |contact| %>
 
   <tr>
+    <!--call contact details from the databse and returning into the table-->
     <td><%= contact.first_name %></td>
     <td><%= contact.last_name %></td>
     <td><%= contact.email %></td>
@@ -23,11 +24,13 @@
     </td>
 
     <td>
+<!--    button to go to show contacts page-->
     <%= link_to "Show this contact", contact, class:"btn btn-dark"  %>
     </td>
   </tr>
 <% end %>
   </tbody>
   </table>
+<!--button to got to add new contact-->
 <%= link_to "New Contact", new_contact_path, class:"btn btn-dark" %>
 
