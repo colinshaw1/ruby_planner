@@ -17,7 +17,7 @@
   </thead>
   <tbody>
   <% @todos.each do |todo| %>
-<!--     if statment using embedded ruby to only show logged in users tasks-->
+  <!--     if statment using embedded ruby to only show logged in users tasks-->
     <% if todo.user == current_user %>
     <tr>
 <!--      renders from the database the tasks details-->
@@ -38,3 +38,4 @@
 </table>
 <!--button to go to new task-->
 <%= link_to "New Task", new_todo_path, class:"btn btn-dark" %>
+
