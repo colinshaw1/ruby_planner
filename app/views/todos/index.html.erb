@@ -17,7 +17,8 @@
   </thead>
   <tbody>
   <% @todos.each do |todo| %>
-
+    # if statment using embedded ruby to only show logged in users tasks
+    <% if todo.user == current_user %>
     <tr>
 <!--      renders from the database the tasks details-->
       <td><%= todo.task %></td>
@@ -31,6 +32,7 @@
         <%= link_to "Show this task", todo, class:"btn btn-dark"  %>
       </td>
     </tr>
+  <% end %>
   <% end %>
   </tbody>
 </table>

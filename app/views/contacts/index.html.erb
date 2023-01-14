@@ -15,7 +15,8 @@
     </thead>
 <tbody>
   <% @contacts.each do |contact| %>
-
+# if statment using embedded ruby to only show logged in users contacts
+  <% if contact.user == current_user %>
   <tr>
     <!--call contact details from the databse and returning into the table-->
     <td><%= contact.first_name %></td>
@@ -30,6 +31,7 @@
     <%= link_to "Show this contact", contact, class:"btn btn-dark"  %>
     </td>
   </tr>
+<% end %>
 <% end %>
   </tbody>
   </table>
