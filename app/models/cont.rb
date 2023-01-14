@@ -1,2 +1,0 @@
-class Cont < ApplicationRecord
-end
