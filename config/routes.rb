@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   # new routes for devise users from gem
   devise_for :users
+  # after testing and sign out route wouldn't work need to ass get method for sign out
+  devise_scope :user do
+    get '/users/sign_out' => 'devise/sessions#destroy'
+  end
   # resources for routes in to do list
   resources :todos
   # resources for routes in contacts

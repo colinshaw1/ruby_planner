@@ -12,30 +12,45 @@
           <!-- embedded ruby path to contact page using the link to method-->
           <%= link_to 'Contacts', contacts_path, class:"nav-link" %>
         </li>
-        <li class="nav-item">
-        <!-- embedded ruby path to contact page using the link to method-->
-        <%= link_to 'Add Contact', new_contact_path, class:"nav-link" %>
-        </li>
+
         <li class="nav-item">
           <!-- embedded ruby path to todo list page using the link to method-->
           <%= link_to 'To Do List', todos_path, class:"nav-link" %>
         </li>
-        <li class="nav-item">
-          <!-- embedded ruby path to add to to do list page using the link to method-->
-          <%= link_to 'Add Task', new_todo_path, class:"nav-link" %>
-        </li>
-        <li class="nav-item">
-          <!-- embedded ruby path to add sign up page using the link to method-->
-          <%= link_to 'Sign Up', new_user_registration_path, class:"nav-link" %>
-        </li>
-        <li class="nav-item">
-          <!-- embedded ruby path to add sign in page using the link to method-->
-          <%= link_to 'Sign In', new_user_session_path, class:"nav-link" %>
-        </li>
-        <li class="nav-item">
-          <!-- embedded ruby path to add to sign out page using the link to method-->
-          <%= link_to 'Sign Out', destroy_user_session_path, class:"nav-link" %>
-        </li>
+
+
+        <!-- if statment for embedded ruby for rules if user is signed in-->
+        <!-- taking from devise documents-->
+        <% if user_signed_in? %>
+          <li class="nav-item">
+            <!-- embedded ruby path to contact page using the link to method-->
+            <%= link_to 'Add Contact', new_contact_path, class:"nav-link" %>
+          </li>
+          <li class="nav-item">
+            <!-- embedded ruby path to add to to do list page using the link to method-->
+            <%= link_to 'Add Task', new_todo_path, class:"nav-link" %>
+          </li>
+          <li class="nav-item">
+            <!-- embedded ruby path to add to sign out page using the link to method-->
+            <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class:"nav-link" %>
+          </li>
+          <li class="nav-item">
+            <!-- embedded ruby path to add to sign out page using the link to method-->
+            <%= link_to "Edit Account", edit_user_registration_path, class:"nav-link" %>
+          </li>
+          <!-- else statment to show optiions for anyone who hasnt an account-->
+          <% else %>
+            <li class="nav-item">
+              <!-- embedded ruby path to add sign in page using the link to method-->
+              <%= link_to 'Sign In', new_user_session_path, class:"nav-link" %>
+            </li>
+            <li class="nav-item">
+              <!-- embedded ruby path to add sign up page using the link to method-->
+              <%= link_to 'Sign Up', new_user_registration_path, class:"nav-link" %>
+            </li>
+
+          <% end %>
+
       </ul>
       <form class="d-flex" role="search">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
