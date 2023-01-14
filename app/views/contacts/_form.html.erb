@@ -30,6 +30,11 @@
     <%= form.label :number, style: "display: block" %>
     <%= form.text_field :number %>
   </div>
+  <!--form for user id to track a contact for add to an accoount-->
+  <div>
+    <%= form.number_field :user_id, id: :contact_user_id, type: :hidden  %>
+  </div>
+
   <br>
   <div>
     <%= form.submit class: "btn btn-dark" %>
