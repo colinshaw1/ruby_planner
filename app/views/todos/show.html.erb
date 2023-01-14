@@ -1,8 +1,10 @@
 <p style="color: green"><%= notice %></p>
+<!--table to show a task-->
 <table class="table table-striped table-bordered">
+<!--  table header-->
   <thead class="table-dark">
   <tr>
-
+<!--    table task headers-->
     <th>Task</th>
     <th>Description</th>
     <th>Timeframe</th>
@@ -12,16 +14,20 @@
   <tbody>
 
 <tr>
+<!--  returns task details-->
   <td><%= @todo.task %></td>
   <td><%= @todo.description %></td>
   <td><%= @todo.timeframe %></td>
+<!--  delete task button-->
 <td><%= button_to "Delete this task", @todo, method: :delete, class:"btn btn-dark" %> </td>
 
 
 </table>
 <div>
-  <%= link_to "Edit this todo", edit_todo_path(@todo), class:"btn btn-dark" %>
-  <%= link_to "Back to todos", todos_path, class:"btn btn-dark" %>
+<!--  button to go back to edit tasks-->
+  <%= link_to "Edit this Task", edit_todo_path(@todo), class:"btn btn-dark" %>
+<!--  button to go back to tasks-->
+  <%= link_to "Back to Tasks", todos_path, class:"btn btn-dark" %>
 
 
 </div>
