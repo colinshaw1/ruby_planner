@@ -59,6 +59,14 @@ class ContactsController < ApplicationController
     end
   end
 
+  # method created for contacts. if current user meets the parms in database
+  # the correct user will be the logged in user
+  def cur_user
+    @contact = current_user.contacts.find_by(id: parms[:id])
+    # auth message if it is not the correct user they cannot edit
+    redirect_to contacts_path, notice: "Not able to edit contact!!" if@contact.nil?
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_contact
