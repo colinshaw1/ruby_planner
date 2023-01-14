@@ -1,5 +1,7 @@
 class ContactsController < ApplicationController
   before_action :set_contact, only: %i[ show edit update destroy ]
+  # if a user is not authemnticated they can only view the index and show pages
+  before_action :authenticate_user!, except:[:index, :show]
 
   # GET /contacts or /contacts.json
   def index

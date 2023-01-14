@@ -1,6 +1,7 @@
 class TodosController < ApplicationController
   before_action :set_todo, only: %i[ show edit update destroy ]
-
+  # if a user is not authemnticated they can only view the index and show pages
+  before_action :authenticate_user!, except:[:index, :show]
   # GET /todos or /todos.json
   def index
     @todos = Todo.all
