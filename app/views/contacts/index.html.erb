@@ -15,7 +15,7 @@
     </thead>
 <tbody>
   <% @contacts.each do |contact| %>
-# if statment using embedded ruby to only show logged in users contacts
+<!-- if statment using embedded ruby to only show logged in users contacts-->
   <% if contact.user == current_user %>
   <tr>
     <!--call contact details from the databse and returning into the table-->
