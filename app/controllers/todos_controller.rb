@@ -2,6 +2,8 @@ class TodosController < ApplicationController
   before_action :set_todo, only: %i[ show edit update destroy ]
   # if a user is not authemnticated they can only view the index and show pages
   before_action :authenticate_user!, except:[:index, :show]
+  # make sure the user is correct before allowing to edit, delte or destroy
+  before_action :cur_user, only: [:edit, :update, :destory]
   # GET /todos or /todos.json
   def index
     @todos = Todo.all
@@ -12,8 +14,11 @@ class TodosController < ApplicationController
   end
 
   # GET /todos/new
+  # GET /contacts/new
   def new
-    @todo = Todo.new
+
+    # tell app to use cur_user method for new contacts
+    @todo = current_user.todos.build
   end
 
   # GET /todos/1/edit
@@ -22,8 +27,9 @@ class TodosController < ApplicationController
 
   # POST /todos or /todos.json
   def create
-    @todo = Todo.new(todo_params)
 
+    # pass in current user method and params when creating a user
+    @todo = current_user.todos.build(todo_params)
     respond_to do |format|
       if @todo.save
         format.html { redirect_to todo_url(@todo), notice: "Todo was successfully created." }
@@ -56,6 +62,14 @@ class TodosController < ApplicationController
       format.html { redirect_to todos_url, notice: "Todo was successfully destroyed." }
       format.json { head :no_content }
     end
+  end
+
+  # method created for tasks. if current user meets the parms in database
+  # the correct user will be the logged in user
+  def cur_user
+    @todo= current_user.todos.find_by(id: params[:id])
+    # auth message if it is not the correct user they cannot edit
+    redirect_to todos_path, notice: "Not able to edit task!!" if@todo.nil?
   end
 
   private

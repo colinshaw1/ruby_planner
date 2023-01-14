@@ -18,7 +18,7 @@ class ContactsController < ApplicationController
   def new
     # @contact = Contact.new
     # tell app to use cur_user method for new contacts
-    @contact = cur_user.contacts.build
+    @contact = current_user.contacts.build
   end
 
   # GET /contacts/1/edit
@@ -29,7 +29,7 @@ class ContactsController < ApplicationController
   def create
     # @contact = Contact.new(contact_params)
     # pass in current user method and params when creating a user
-    @contact = cur_user.contacts.build(contact_params)
+    @contact = current_user.contacts.build(contact_params)
     respond_to do |format|
       if @contact.save
         format.html { redirect_to contact_url(@contact), notice: "Contact was successfully created." }
@@ -67,7 +67,7 @@ class ContactsController < ApplicationController
   # method created for contacts. if current user meets the parms in database
   # the correct user will be the logged in user
   def cur_user
-    @contact = current_user.contacts.find_by(id: parms[:id])
+    @contact = current_user.contacts.find_by(id: params[:id])
     # auth message if it is not the correct user they cannot edit
     redirect_to contacts_path, notice: "Not able to edit contact!!" if@contact.nil?
   end
