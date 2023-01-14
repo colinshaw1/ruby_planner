@@ -24,6 +24,18 @@
           <!-- embedded ruby path to add to to do list page using the link to method-->
           <%= link_to 'Add Task', new_todo_path, class:"nav-link" %>
         </li>
+        <li class="nav-item">
+          <!-- embedded ruby path to add sign up page using the link to method-->
+          <%= link_to 'Sign Up', new_user_registration_path, class:"nav-link" %>
+        </li>
+        <li class="nav-item">
+          <!-- embedded ruby path to add sign in page using the link to method-->
+          <%= link_to 'Sign In', new_user_session_path, class:"nav-link" %>
+        </li>
+        <li class="nav-item">
+          <!-- embedded ruby path to add to sign out page using the link to method-->
+          <%= link_to 'Sign Out', destroy_user_session_path, class:"nav-link" %>
+        </li>
       </ul>
       <form class="d-flex" role="search">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
